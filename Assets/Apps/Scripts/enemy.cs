@@ -51,4 +51,9 @@ public class enemy : MonoBehaviour, IPoolObject
             //transform.position = Vector3.MoveTowards(transform.position, position , Time.deltaTime * 5f);
         }
     }
+    public void attack()
+    {
+        player p = FindObjectOfType<player>();
+        p.hp -= 10;
+    }
 }

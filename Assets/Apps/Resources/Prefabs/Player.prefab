@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDelay: 0.2
   pool: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &9090490486106096641
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,9 +146,12 @@ GameObject:
   - component: {fileID: 5203963428670725589}
   - component: {fileID: 356596326}
   - component: {fileID: 1998111207}
+  - component: {fileID: 6051514030859336212}
+  - component: {fileID: 1844285841}
+  - component: {fileID: 1844285842}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +255,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0803889}
@@ -389,3 +393,63 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &6051514030859336212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090490486106096641}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d249883e4a168c045a4c24ab31736309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+--- !u!114 &1844285841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090490486106096641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ae449fc049d2b41b447afb73953cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: 10
+  max: 10
+  lowHP:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1844285842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090490486106096641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80251b4ef03acf648ab3d6645309c0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1844285841}
+        m_TargetAssemblyTypeName: health, Assembly-CSharp
+        m_MethodName: reduceHealth
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  targetTag:
+  - Enemy
+  - Bullet_Enemy
